@@ -1,12 +1,12 @@
 import React from 'react'
 
-export default class DisplayBlock extends React.Component {
+export default class CalcDisplay extends React.Component {
   constructor(props) {
     super(props)
   }
   render() {
     return (
-      <div className="DisplayBlock" {...this.props}>
+      <div className="CalcDisplay" {...this.props}>
         {this.props.children}
       </div>
     )

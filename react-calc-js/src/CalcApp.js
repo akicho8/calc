@@ -1,95 +1,88 @@
 import React from 'react'
-import NumButton from "./NumButton"
-import DisplayBlock from "./DisplayBlock"
+import CalcNumButton from "./CalcNumButton"
+import CalcOpButton from "./CalcOpButton"
+import CalcDarkButton from "./CalcDarkButton"
+import CalcDisplay from "./CalcDisplay"
 
 export default class CalcApp extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      acc_right: 0,
-      acc_left: null,
-      op_key: null,
+      ax_value: 0,
+      bx_value: null,
+      op_value: null,
     }
   }
 
   onNumberClickHandle = (plus_value) => {
-    if (this.state.op_key == null) {
-      this.setState(prevState => ({acc_left: prevState.acc_left * 10 + plus_value}))
+    if (this.state.op_value == null) {
+      this.setState(prevState => ({ax_value: prevState.ax_value * 10 + plus_value}))
     } else {
-      this.setState(prevState => ({acc_right: prevState.acc_right * 10 + plus_value}))
+      this.setState(prevState => ({bx_value: prevState.bx_value * 10 + plus_value}))
     }
-  }
-
-  onClearHandle = (value) => {
-    this.setState({
-      acc_right: value,
-      acc_left: null,
-      op_key: null,
-    })
   }
 
   onClearHandle = () => {
     this.setState({
-      acc_left: 0,
-      acc_right: null,
-      op_key: null,
+      ax_value: 0,
+      bx_value: null,
+      op_value: null,
     })
   }
 
-  onSetOpHandle = (op_key) => {
-    if (op_key === "+" || op_key === "-") {
+  onSetOpHandle = (op_value) => {
+    if (op_value === "+" || op_value === "-" || true) {
       this.onEqualHandle()
-      this.setState({op_key: op_key})
+      this.setState({op_value: op_value})
     }
   }
 
   onEqualHandle = () => {
-    if (this.state.acc_right == null) {
-    } else {
-      if (this.state.op_key === "+") {
-        this.setState({acc_left: this.state.acc_left + this.state.acc_right, acc_right: null, op_key: null})
-      } else if (this.state.op_key === "-") {
-        this.setState({acc_left: this.state.acc_left - this.state.acc_right, acc_right: null, op_key: null})
+    if (this.state.bx_value != null) {
+      let value = null;
+      if (false) {
+      } else if (this.state.op_value === "+") {
+        value = this.state.ax_value + this.state.bx_value
+      } else if (this.state.op_value === "-") {
+        value = this.state.ax_value - this.state.bx_value
+      } else if (this.state.op_value === "*") {
+        value = this.state.ax_value * this.state.bx_value
+      } else if (this.state.op_value === "/") {
+        value = this.state.ax_value / this.state.bx_value
       }
+      value = Math.round(value * 1000000) / 1000000
+      this.setState({ax_value: value, bx_value: null, op_value: null})
     }
   }
 
   render() {
     return (
       <div className="CalcApp">
-        <DisplayBlock>
-          {(this.state.acc_left != null) && <span>{this.state.acc_left}</span>}
-          {(this.state.op_key != null) && <span>{this.state.op_key}</span>}
-          {(this.state.acc_right != null) && <span>{this.state.acc_right}</span>}
-        </DisplayBlock>
+        <CalcDisplay>
+          {(this.state.ax_value != null) && <span>{this.state.ax_value}</span>}
+          {(this.state.op_value != null) && <span>{this.state.op_value}</span>}
+          {(this.state.bx_value != null) && <span>{this.state.bx_value}</span>}
+        </CalcDisplay>
 
-        <div>
-          <NumButton label="7" onClick={() => this.onNumberClickHandle(7)} />
-          <NumButton label="8" onClick={() => this.onNumberClickHandle(8)} />
-          <NumButton label="9" onClick={() => this.onNumberClickHandle(9)} />
-          <NumButton label="C" onClick={this.onClearHandle} />
-        </div>
-
-        <div>
-          <NumButton label="4" onClick={() => this.onNumberClickHandle(4)} />
-          <NumButton label="5" onClick={() => this.onNumberClickHandle(5)} />
-          <NumButton label="6" onClick={() => this.onNumberClickHandle(6)} />
-        </div>
-
-        <div>
-          <NumButton label="1" onClick={() => this.onNumberClickHandle(1)} />
-          <NumButton label="2" onClick={() => this.onNumberClickHandle(2)} />
-          <NumButton label="3" onClick={() => this.onNumberClickHandle(3)} />
-        </div>
-
-        <div>
-          <NumButton label="0" onClick={() => this.onNumberClickHandle(0)} />
-        </div>
-
-        <div>
-          <NumButton label="+" onClick={() => this.onSetOpHandle("+")} />
-          <NumButton label="-" onClick={() => this.onSetOpHandle("-")} />
-          <NumButton label="=" onClick={this.onEqualHandle} />
+        <div className="CalcNumButtons">
+          <CalcDarkButton label="C"  onClick={this.onClearHandle} />
+          <CalcDarkButton label="±" onClick={() => this.onSetOpHandle("+")} />
+          <CalcDarkButton label="%"  onClick={() => this.onSetOpHandle("%")} />
+          <CalcOpButton label="÷" onClick={() => this.onSetOpHandle("/")} />
+          <CalcNumButton label="7"  onClick={() => this.onNumberClickHandle(7)} />
+          <CalcNumButton label="8"  onClick={() => this.onNumberClickHandle(8)} />
+          <CalcNumButton label="9"  onClick={() => this.onNumberClickHandle(9)} />
+          <CalcOpButton label="×" onClick={() => this.onSetOpHandle("*")} />
+          <CalcNumButton label="4"  onClick={() => this.onNumberClickHandle(4)} />
+          <CalcNumButton label="5"  onClick={() => this.onNumberClickHandle(5)} />
+          <CalcNumButton label="6"  onClick={() => this.onNumberClickHandle(6)} />
+          <CalcOpButton label="-"  onClick={() => this.onSetOpHandle("-")} />
+          <CalcNumButton label="1"  onClick={() => this.onNumberClickHandle(1)} />
+          <CalcNumButton label="2"  onClick={() => this.onNumberClickHandle(2)} />
+          <CalcNumButton label="3"  onClick={() => this.onNumberClickHandle(3)} />
+          <CalcOpButton label="+"  onClick={() => this.onSetOpHandle("+")} />
+          <CalcNumButton label="0"  onClick={() => this.onNumberClickHandle(0)} className="CalcNumButton double_size" />
+          <CalcOpButton label="="  onClick={this.onEqualHandle} className="CalcOpButton double_size" />
         </div>
       </div>
     )
