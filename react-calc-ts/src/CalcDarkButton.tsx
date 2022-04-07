@@ -5,7 +5,7 @@ interface Props {
   onClick: () => void
 }
 
-export default class CalcDarkButton extends React.Component<{}, Props> {
+export default class CalcDarkButton extends React.Component<Props, {}> {
   constructor(props: Props) {
     super(props)
   }

@@ -1,7 +1,12 @@
 import React from 'react'
 
-export default class CalcOpButton extends React.Component {
-  constructor(props: any) {
+interface Props {
+  label: string
+  onClick: () => void
+}
+
+export default class CalcOpButton extends React.Component<Props, {}> {
+  constructor(props: Props) {
     super(props)
   }
   render() {

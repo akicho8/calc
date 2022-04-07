@@ -1,5 +1,4 @@
-// // こう書けない？
-// export default (props) => {
+// export default (props: any) => {
 //   return (
 //     <div className="CalcDisplay" {...props}>
 //       {props.children}
@@ -10,7 +9,7 @@
 import React from 'react'
 
 export default class CalcDisplay extends React.Component {
-  constructor(props) {
+  constructor(props: any) {
     super(props)
   }
   render() {
