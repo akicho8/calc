@@ -4,8 +4,8 @@
 
 ![](image.png)
 
-| Dir                 | FW    |     |       |
-|---------------------|-------|-----|-------|
-| react-calc-js-class | React | js  | Class |
-| react-calc-js-hooks | React | js  | Hooks |
-| react-calc-ts-class | React | tsx | Class |
+| Dir                 | FW    |            |       |
+|---------------------|-------|------------|-------|
+| react-calc-js-class | React |            | Class |
+| react-calc-js-hooks | React |            | Hooks |
+| react-calc-ts-class | React | TypeScript | Class |
