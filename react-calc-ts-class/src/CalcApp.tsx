@@ -4,22 +4,26 @@ import CalcOpButton from "./CalcOpButton"
 import CalcDarkButton from "./CalcDarkButton"
 import CalcDisplay from "./CalcDisplay"
 
-export default class CalcApp extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      ax_value: 0,
-      bx_value: null,
-      cx_value: null,
-      op_value: null,
-    }
+interface State {
+  ax_value: any
+  bx_value: any
+  cx_value: any
+  op_value: any
+}
+
+export default class CalcApp extends React.Component<{}, State> {
+  state: State = {
+    ax_value: 0,
+    bx_value: null,
+    cx_value: null,
+    op_value: null,
   }
 
-  onNumberClickHandle = (plus_value) => {
+  onNumberClickHandle = (plus_value: any) => {
     if (this.state.op_value == null) {
-      this.setState(prevState => ({ax_value: prevState.ax_value * 10 + plus_value}))
+      this.setState(prev => ({ax_value: prev.ax_value * 10 + plus_value}))
     } else {
-      this.setState(prevState => ({bx_value: prevState.bx_value * 10 + plus_value}))
+      this.setState(prev => ({bx_value: prev.bx_value * 10 + plus_value}))
     }
   }
 
@@ -29,25 +33,21 @@ export default class CalcApp extends React.Component {
   }
 
   onClearHandle = () => {
-    this.setState({
-      bx_value: null,
-    })
+    this.setState({bx_value: null})
   }
 
   onAllClearHandle = () => {
-    this.setState({
-      ax_value: 0,
-      bx_value: null,
-      cx_value: null,
-      op_value: null,
-    })
+    this.setState({ax_value: 0})
+    this.setState({bx_value: null})
+    this.setState({cx_value: null})
+    this.setState({op_value: null})
   }
 
   isClearHandle = () => {
     return this.state.bx_value != null
   }
 
-  onSetOpHandle = (op_value) => {
+  onSetOpHandle = (op_value: any) => {
     if (this.state.bx_value != null) {
       this.calcUpdate()
     }
@@ -67,19 +67,22 @@ export default class CalcApp extends React.Component {
       // しかたなくばらして実行
       // すでに使いにくくなっている
       if (this.state.op_value != null) {
-        let bx_value = this.state.bx_value ?? this.state.cx_value ?? this.state.ax_value
-        const value = this.calcUpdate2(this.state.ax_value, bx_value, this.state.op_value)
-        this.setState({ax_value: value, bx_value: null, cx_value: bx_value})
+        let rhv = this.state.bx_value ?? this.state.cx_value ?? this.state.ax_value
+        const value = this.calcUpdate2(this.state.ax_value, rhv, this.state.op_value)
+        this.setState({ax_value: value})
+        this.setState({bx_value: null})
+        this.setState({cx_value: rhv})
       }
     }
   }
 
   calcUpdate = () => {
     const value = this.calcUpdate2(this.state.ax_value, this.state.bx_value, this.state.op_value)
-    this.setState({ax_value: value, bx_value: null})
+    this.setState({ax_value: value})
+    this.setState({bx_value: null})
   }
 
-  calcUpdate2 = (ax, bx, op) => {
+  calcUpdate2 = (ax: any, bx: any, op: any) => {
     let value = null;
     if (false) {
     } else if (op === "+") {
@@ -138,7 +141,7 @@ export default class CalcApp extends React.Component {
            : <CalcDarkButton label="AC"  onClick={this.onAllClearHandle} />
           }
           <CalcDarkButton label="±" onClick={this.onSignToggle} />
-          <CalcDarkButton label="％"  onClick={this.onParcentage} />
+          <CalcDarkButton label="％" onClick={this.onParcentage} />
           <CalcOpButton   label="÷" onClick={() => this.onSetOpHandle("/")} />
           <CalcNumButton  label="7"  onClick={() => this.onNumberClickHandle(7)} />
           <CalcNumButton  label="8"  onClick={() => this.onNumberClickHandle(8)} />
@@ -147,11 +150,11 @@ export default class CalcApp extends React.Component {
           <CalcNumButton  label="4"  onClick={() => this.onNumberClickHandle(4)} />
           <CalcNumButton  label="5"  onClick={() => this.onNumberClickHandle(5)} />
           <CalcNumButton  label="6"  onClick={() => this.onNumberClickHandle(6)} />
-          <CalcOpButton   label="-" onClick={() => this.onSetOpHandle("-")} />
+          <CalcOpButton   label="-"  onClick={() => this.onSetOpHandle("-")} />
           <CalcNumButton  label="1"  onClick={() => this.onNumberClickHandle(1)} />
           <CalcNumButton  label="2"  onClick={() => this.onNumberClickHandle(2)} />
           <CalcNumButton  label="3"  onClick={() => this.onNumberClickHandle(3)} />
-          <CalcOpButton   label="+" onClick={() => this.onSetOpHandle("+")} />
+          <CalcOpButton   label="+"  onClick={() => this.onSetOpHandle("+")} />
           <CalcNumButton  label="0"  onClick={() => this.onNumberClickHandle(0)} className="CalcNumButton is_2x" />
           <CalcNumButton  label="00" onClick={this.onZeroZeroClick} />
           <CalcOpButton   label="="  onClick={this.onEqualHandle} />

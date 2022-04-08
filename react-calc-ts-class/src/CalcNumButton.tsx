@@ -16,16 +16,3 @@ export default class CalcNumButton extends React.Component<Props, {}> {
     )
   }
 }
-
-// import React from 'react'
-// 
-// export default class CalcNumButton extends React.Component {
-//   constructor(props: any) {
-//     super(props)
-//   }
-//   render() {
-//     return (
-//       <button className="CalcNumButton" {...this.props}>{this.props.label}</button>
-//     )
-//   }
-// }
