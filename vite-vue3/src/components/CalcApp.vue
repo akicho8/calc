@@ -7,20 +7,20 @@ import CalcDarkButton from "./CalcDarkButton.vue"
 import CalcDisplay    from "./CalcDisplay.vue"
 import "./CalcApp.css"
 
-const ax_value = ref(0)
-const bx_value = ref(null)
-const cx_value = ref(null)
-const op_value = ref(null)
+const ax_r = ref(0)
+const bx_r = ref(null)
+const cx_r = ref(null)
+const op_r = ref(null)
 
-watch(ax_value, (new_v, old_v) => {
+watch(ax_r, (new_v, old_v) => {
   document.title = new_v.toString()
 })
 
 function onNumberClickHandle(plus_value) {
-  if (op_value.value == null) {
-    ax_value.value = ax_value.value * 10 + plus_value
+  if (op_r.value == null) {
+    ax_r.value = ax_r.value * 10 + plus_value
   } else {
-    bx_value.value = bx_value.value * 10 + plus_value
+    bx_r.value = bx_r.value * 10 + plus_value
   }
 }
 
@@ -30,50 +30,50 @@ function onZeroZeroClick() {
 }
 
 function onClearHandle() {
-  bx_value.value = null
+  bx_r.value = null
 }
 
 function onAllClearHandle() {
-  ax_value.value = 0
-  bx_value.value = null
-  cx_value.value = null
-  op_value.value = null
+  ax_r.value = 0
+  bx_r.value = null
+  cx_r.value = null
+  op_r.value = null
 }
 
 function onSetOpHandle(v) {
-  if (bx_value.value != null) {
+  if (bx_r.value != null) {
     calcUpdate()
   }
-  op_value.value = v
+  op_r.value = v
 }
 
 function onEqualHandle() {
-  if (op_value.value != null) {
+  if (op_r.value != null) {
     // bx がなければ cx か ax を設定と自然に書ける
-    if (bx_value.value == null) {
-      bx_value.value = cx_value.value ?? ax_value.value
+    if (bx_r.value == null) {
+      bx_r.value = cx_r.value ?? ax_r.value
     }
-    // ここで bx_value.value には確実に値が入っている
+    // ここで bx_r.value には確実に値が入っている
     // React では入っていない
     calcUpdate()
-    cx_value.value = bx_value.value
-    bx_value.value = null
+    cx_r.value = bx_r.value
+    bx_r.value = null
   }
   // // しかたなくばらして実行
   // // すでに使いにくくなっている
-  //   if (op_value.value != null) {
-  //     let rhv = bx_value.value ?? cx_value.value ?? ax_value.value
-  //     const value = calcUpdate2(ax_value.value, rhv, op_value.value)
-  //     ax_value.value = value
-  //     bx_value.value = null
-  //     cx_value.value = rhv
+  //   if (op_r.value != null) {
+  //     let rhv = bx_r.value ?? cx_r.value ?? ax_r.value
+  //     const value = calcUpdate2(ax_r.value, rhv, op_r.value)
+  //     ax_r.value = value
+  //     bx_r.value = null
+  //     cx_r.value = rhv
   //   }
 }
 
 function calcUpdate() {
-  const value = calcUpdate2(ax_value.value, bx_value.value, op_value.value)
-  ax_value.value = value
-  bx_value.value = null
+  const value = calcUpdate2(ax_r.value, bx_r.value, op_r.value)
+  ax_r.value = value
+  bx_r.value = null
 }
 
 function calcUpdate2(ax, bx, op) {
@@ -92,31 +92,31 @@ function calcUpdate2(ax, bx, op) {
 }
 
 function onSignToggle() {
-  if (bx_value.value != null) {
-    bx_value.value = -bx_value.value
-  } else if (ax_value.value != null) {
-    ax_value.value = -ax_value.value
+  if (bx_r.value != null) {
+    bx_r.value = -bx_r.value
+  } else if (ax_r.value != null) {
+    ax_r.value = -ax_r.value
   }
 }
 
 function onParcentage() {
-  if (bx_value.value != null) {
-    bx_value.value = bx_value.value / 100
-  } else if (ax_value.value != null) {
-    ax_value.value = ax_value.value / 100
+  if (bx_r.value != null) {
+    bx_r.value = bx_r.value / 100
+  } else if (ax_r.value != null) {
+    ax_r.value = ax_r.value / 100
   }
 }
 
 // computed
 
-const isClearHandle = computed(() => bx_value.value != null)
+const isClearHandle = computed(() => bx_r.value != null)
 
 const resultString = computed(() => {
   let str = null
-  if (bx_value.value != null) {
-    str = bx_value
-  } else if (ax_value.value != null) {
-    str = ax_value
+  if (bx_r.value != null) {
+    str = bx_r
+  } else if (ax_r.value != null) {
+    str = ax_r
   }
   return str
 })
@@ -124,7 +124,7 @@ const resultString = computed(() => {
 
 <template>
   <span class="CalcApp">
-    <!-- p {{ax_value}},{{op_value}},{{bx_value}} -->
+    <!-- p {{ax_r}},{{op_r}},{{bx_r}} -->
     <CalcDisplay>{{resultString}}</CalcDisplay>
     <div className="CalcNumButtons">
       <template v-if="isClearHandle">

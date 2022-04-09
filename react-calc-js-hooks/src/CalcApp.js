@@ -6,13 +6,13 @@ import CalcDarkButton from "./CalcDarkButton"
 import CalcDisplay    from "./CalcDisplay"
 
 export default (props) => {
-  const [ax_value, set_ax_value] = useState(0)
-  const [bx_value, set_bx_value] = useState(null)
-  const [cx_value, set_cx_value] = useState(null)
-  const [op_value, set_op_value] = useState(null)
+  const [ax_r, set_ax_value] = useState(0)
+  const [bx_r, set_bx_value] = useState(null)
+  const [cx_r, set_cx_value] = useState(null)
+  const [op_r, set_op_value] = useState(null)
 
   function onNumberClickHandle(plus_value) {
-    if (op_value == null) {
+    if (op_r == null) {
       set_ax_value(prev => prev * 10 + plus_value)
     } else {
       set_bx_value(prev => prev * 10 + plus_value)
@@ -36,31 +36,31 @@ export default (props) => {
   }
 
   function isClearHandle() {
-    return bx_value != null
+    return bx_r != null
   }
 
-  function onSetOpHandle(op_value) {
-    if (bx_value != null) {
+  function onSetOpHandle(op_r) {
+    if (bx_r != null) {
       calcUpdate()
     }
-    set_op_value(op_value)
+    set_op_value(op_r)
   }
 
   function onEqualHandle() {
     if (false) {
-      // 次のように書きたかったが bx_value を設定しても stata.bx_value は更新されない
-      if (op_value != null) {
-        if (bx_value == null) {
-          set_bx_value(ax_value)
+      // 次のように書きたかったが bx_r を設定しても stata.bx_r は更新されない
+      if (op_r != null) {
+        if (bx_r == null) {
+          set_bx_value(ax_r)
         }
         calcUpdate()
       }
     } else {
       // しかたなくばらして実行
       // すでに使いにくくなっている
-      if (op_value != null) {
-        let rhv = bx_value ?? cx_value ?? ax_value
-        const value = calcUpdate2(ax_value, rhv, op_value)
+      if (op_r != null) {
+        let rhv = bx_r ?? cx_r ?? ax_r
+        const value = calcUpdate2(ax_r, rhv, op_r)
         set_ax_value(value)
         set_bx_value(null)
         set_cx_value(rhv)
@@ -69,7 +69,7 @@ export default (props) => {
   }
 
   function calcUpdate() {
-    const value = calcUpdate2(ax_value, bx_value, op_value)
+    const value = calcUpdate2(ax_r, bx_r, op_r)
     set_ax_value(value)
     set_bx_value(null)
   }
@@ -90,27 +90,27 @@ export default (props) => {
   }
 
   function onSignToggle() {
-    if (bx_value != null) {
-      set_bx_value(-bx_value)
-    } else if (ax_value != null) {
-      set_ax_value(-ax_value)
+    if (bx_r != null) {
+      set_bx_value(-bx_r)
+    } else if (ax_r != null) {
+      set_ax_value(-ax_r)
     }
   }
 
   function onParcentage() {
-    if (bx_value != null) {
-      set_bx_value(bx_value / 100)
-    } else if (ax_value != null) {
-      set_ax_value(ax_value / 100)
+    if (bx_r != null) {
+      set_bx_value(bx_r / 100)
+    } else if (ax_r != null) {
+      set_ax_value(ax_r / 100)
     }
   }
 
   function resultString() {
     let str = null
-    if (bx_value != null) {
-      str = bx_value
-    } else if (ax_value != null) {
-      str = ax_value
+    if (bx_r != null) {
+      str = bx_r
+    } else if (ax_r != null) {
+      str = ax_r
     }
     return str
   }
@@ -118,11 +118,11 @@ export default (props) => {
   return (
     <div className="CalcApp">
       {/* <CalcDisplay> */}
-      {/*   {(ax_value != null) && <span>{ax_value}</span>} */}
-      {/*   {(op_value != null) && <span>{op_value}</span>} */}
-      {/*   {(bx_value != null) && <span>{bx_value}</span>} */}
+      {/*   {(ax_r != null) && <span>{ax_r}</span>} */}
+      {/*   {(op_r != null) && <span>{op_r}</span>} */}
+      {/*   {(bx_r != null) && <span>{bx_r}</span>} */}
       {/* </CalcDisplay> */}
-      {/* <CalcDisplay>{ax_value}, {op_value}, {bx_value} ({cx_value})</CalcDisplay> */}
+      {/* <CalcDisplay>{ax_r}, {op_r}, {bx_r} ({cx_r})</CalcDisplay> */}
 
       <CalcDisplay>{resultString()}</CalcDisplay>
 

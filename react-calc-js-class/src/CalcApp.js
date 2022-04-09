@@ -8,18 +8,18 @@ export default class CalcApp extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      ax_value: 0,
-      bx_value: null,
-      cx_value: null,
-      op_value: null,
+      ax_r: 0,
+      bx_r: null,
+      cx_r: null,
+      op_r: null,
     }
   }
 
   onNumberClickHandle = (plus_value) => {
-    if (this.state.op_value == null) {
-      this.setState(prev => ({ax_value: prev.ax_value * 10 + plus_value}))
+    if (this.state.op_r == null) {
+      this.setState(prev => ({ax_r: prev.ax_r * 10 + plus_value}))
     } else {
-      this.setState(prev => ({bx_value: prev.bx_value * 10 + plus_value}))
+      this.setState(prev => ({bx_r: prev.bx_r * 10 + plus_value}))
     }
   }
 
@@ -29,53 +29,53 @@ export default class CalcApp extends React.Component {
   }
 
   onClearHandle = () => {
-    this.setState({bx_value: null})
+    this.setState({bx_r: null})
   }
 
   onAllClearHandle = () => {
-    this.setState({ax_value: 0})
-    this.setState({bx_value: null})
-    this.setState({cx_value: null})
-    this.setState({op_value: null})
+    this.setState({ax_r: 0})
+    this.setState({bx_r: null})
+    this.setState({cx_r: null})
+    this.setState({op_r: null})
   }
 
   isClearHandle = () => {
-    return this.state.bx_value != null
+    return this.state.bx_r != null
   }
 
-  onSetOpHandle = (op_value) => {
-    if (this.state.bx_value != null) {
+  onSetOpHandle = (op_r) => {
+    if (this.state.bx_r != null) {
       this.calcUpdate()
     }
-    this.setState({op_value: op_value})
+    this.setState({op_r: op_r})
   }
 
   onEqualHandle = () => {
     if (false) {
-      // 次のように書きたかったが bx_value を設定しても this.stata.bx_value は更新されない
-      if (this.state.op_value != null) {
-        if (this.state.bx_value == null) {
-          this.setState({bx_value: this.state.ax_value})
+      // 次のように書きたかったが bx_r を設定しても this.stata.bx_r は更新されない
+      if (this.state.op_r != null) {
+        if (this.state.bx_r == null) {
+          this.setState({bx_r: this.state.ax_r})
         }
         this.calcUpdate()
       }
     } else {
       // しかたなくばらして実行
       // すでに使いにくくなっている
-      if (this.state.op_value != null) {
-        let rhv = this.state.bx_value ?? this.state.cx_value ?? this.state.ax_value
-        const value = this.calcUpdate2(this.state.ax_value, rhv, this.state.op_value)
-        this.setState({ax_value: value})
-        this.setState({bx_value: null})
-        this.setState({cx_value: rhv})
+      if (this.state.op_r != null) {
+        let rhv = this.state.bx_r ?? this.state.cx_r ?? this.state.ax_r
+        const value = this.calcUpdate2(this.state.ax_r, rhv, this.state.op_r)
+        this.setState({ax_r: value})
+        this.setState({bx_r: null})
+        this.setState({cx_r: rhv})
       }
     }
   }
 
   calcUpdate = () => {
-    const value = this.calcUpdate2(this.state.ax_value, this.state.bx_value, this.state.op_value)
-    this.setState({ax_value: value})
-    this.setState({bx_value: null})
+    const value = this.calcUpdate2(this.state.ax_r, this.state.bx_r, this.state.op_r)
+    this.setState({ax_r: value})
+    this.setState({bx_r: null})
   }
 
   calcUpdate2 = (ax, bx, op) => {
@@ -94,27 +94,27 @@ export default class CalcApp extends React.Component {
   }
 
   onSignToggle = () => {
-    if (this.state.bx_value != null) {
-      this.setState({bx_value: -this.state.bx_value})
-    } else if (this.state.ax_value != null) {
-      this.setState({ax_value: -this.state.ax_value})
+    if (this.state.bx_r != null) {
+      this.setState({bx_r: -this.state.bx_r})
+    } else if (this.state.ax_r != null) {
+      this.setState({ax_r: -this.state.ax_r})
     }
   }
 
   onParcentage = () => {
-    if (this.state.bx_value != null) {
-      this.setState({bx_value: this.state.bx_value / 100})
-    } else if (this.state.ax_value != null) {
-      this.setState({ax_value: this.state.ax_value / 100})
+    if (this.state.bx_r != null) {
+      this.setState({bx_r: this.state.bx_r / 100})
+    } else if (this.state.ax_r != null) {
+      this.setState({ax_r: this.state.ax_r / 100})
     }
   }
 
   resultString = () => {
     let str = null
-    if (this.state.bx_value != null) {
-      str = this.state.bx_value
-    } else if (this.state.ax_value != null) {
-      str = this.state.ax_value
+    if (this.state.bx_r != null) {
+      str = this.state.bx_r
+    } else if (this.state.ax_r != null) {
+      str = this.state.ax_r
     }
     return str
   }
@@ -123,12 +123,12 @@ export default class CalcApp extends React.Component {
     return (
       <div className="CalcApp">
         {/* <CalcDisplay> */}
-        {/*   {(this.state.ax_value != null) && <span>{this.state.ax_value}</span>} */}
-        {/*   {(this.state.op_value != null) && <span>{this.state.op_value}</span>} */}
-        {/*   {(this.state.bx_value != null) && <span>{this.state.bx_value}</span>} */}
+        {/*   {(this.state.ax_r != null) && <span>{this.state.ax_r}</span>} */}
+        {/*   {(this.state.op_r != null) && <span>{this.state.op_r}</span>} */}
+        {/*   {(this.state.bx_r != null) && <span>{this.state.bx_r}</span>} */}
         {/* </CalcDisplay> */}
 
-        {/* <CalcDisplay>{this.state.ax_value}, {this.state.op_value}, {this.state.bx_value} ({this.state.cx_value})</CalcDisplay> */}
+        {/* <CalcDisplay>{this.state.ax_r}, {this.state.op_r}, {this.state.bx_r} ({this.state.cx_r})</CalcDisplay> */}
         <CalcDisplay>{this.resultString()}</CalcDisplay>
 
         <div className="CalcNumButtons">
