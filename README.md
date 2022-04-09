@@ -2,7 +2,7 @@
 
 電卓アプリ作成を通して各種フレームワークの進化・特徴・混沌を体験する
 
-| Dir                   | FW            | 型         | 方法            | setup            |     |
+| Dir                   | FW            | 型         | 方法            | 導入             |     |
 |-----------------------|---------------|------------|-----------------|------------------|-----|
 | react-calc-js-class   | React         |            | Class           | create-react-app |     |
 | react-calc-ts-class   | React         | TypeScript | Class           | create-react-app |     |
