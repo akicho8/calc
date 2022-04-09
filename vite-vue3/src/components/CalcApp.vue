@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 
 import CalcNumButton  from "./CalcNumButton.vue"
 import CalcOpButton   from "./CalcOpButton.vue"
@@ -11,6 +11,10 @@ const ax_value = ref(0)
 const bx_value = ref(null)
 const cx_value = ref(null)
 const op_value = ref(null)
+
+watch(ax_value, (new_v, old_v) => {
+  document.title = new_v.toString()
+})
 
 function onNumberClickHandle(plus_value) {
   if (op_value.value == null) {
