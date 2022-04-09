@@ -1,12 +1,14 @@
-import React from 'react'
+<script setup>
+defineProps({
+  label: String,
+})
+</script>
 
-export default class CalcDarkButton extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-  render() {
-    return (
-      <button className="CalcDarkButton" {...this.props}>{this.props.label}</button>
-    )
-  }
-}
+<template>
+  <button class="CalcDarkButton">
+    {{label}}
+  </button>
+</template>
+
+<style scoped>
+</style>

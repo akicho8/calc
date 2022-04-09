@@ -1,14 +1,11 @@
-import React from 'react'
+<script setup>
+</script>
 
-export default class CalcDisplay extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-  render() {
-    return (
-      <div className="CalcDisplay" {...this.props}>
-        {this.props.children}
-      </div>
-    )
-  }
-}
+<template>
+  <div class="CalcDisplay">
+    <slot/>
+  </div>
+</template>
+
+<style scoped>
+</style>

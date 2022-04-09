@@ -1,12 +1,14 @@
-import React from 'react'
+<script setup>
+defineProps({
+  label: String,
+})
+</script>
 
-export default class CalcOpButton extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-  render() {
-    return (
-      <button className="CalcOpButton" {...this.props}>{this.props.label}</button>
-    )
-  }
-}
+<template>
+  <button class="CalcOpButton">
+    {{label}}
+  </button>
+</template>
+
+<style scoped>
+</style>
