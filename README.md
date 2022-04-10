@@ -13,11 +13,15 @@
 | vue3-composition-setup-api | Vue >= 3.2    |     | script setup    | vue create vite  |     |             |
 | svelte-calc-js             | Svelte 3.44.0 | TS? |                 | vue create vite  |     | vite 2.9.0  |
 
-## react-calc-js-hooks
+## react-calc-js-class
 
 - 変数を即時更新できない(致命傷)
 - watch は componentDidMount と componentDidUpdate の定義(微妙)
 - computed 相当がない？
+
+## react-calc-ts-class
+
+- react-calc-js-class を TypeScript で動くようにしたもの
 
 ## react-calc-js-hooks
 
