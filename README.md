@@ -37,3 +37,8 @@
 - Development tools: jsconfig.json
 - Continuous integration: None
 - Version control system: None
+
+## svelte344-calc-app
+
+- Emacs 用には svelte-mode.el が対応している
+- しかも何の問題もなく全体インデントが効く
