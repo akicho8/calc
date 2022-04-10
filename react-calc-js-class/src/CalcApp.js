@@ -15,6 +15,14 @@ export default class CalcApp extends React.Component {
     }
   }
 
+  componentDidMount() {
+    document.title = this.state.ax_r.toString()
+  }
+
+  componentDidUpdate() {
+    document.title = this.state.ax_r.toString()
+  }
+
   onNumberClickHandle = (plus_value) => {
     if (this.state.op_r == null) {
       this.setState(prev => ({ax_r: prev.ax_r * 10 + plus_value}))
@@ -39,10 +47,6 @@ export default class CalcApp extends React.Component {
     this.setState({op_r: null})
   }
 
-  isClearHandle = () => {
-    return this.state.bx_r != null
-  }
-
   onSetOpHandle = (op_r) => {
     if (this.state.bx_r != null) {
       this.calcUpdate()
@@ -51,23 +55,23 @@ export default class CalcApp extends React.Component {
   }
 
   onEqualHandle = () => {
-    if (false) {
-      // 次のように書きたかったが bx_r を設定しても this.stata.bx_r は更新されない
-      if (this.state.op_r != null) {
-        if (this.state.bx_r == null) {
-          this.setState({bx_r: this.state.ax_r})
-        }
+    if (this.state.op_r != null) {
+      if (false) {
+        // React の問題のある仕様
+        // 本当は単に bx_r ??= cx_r ?? ax_r 相当を行いたい
+        // でも setState しても bx_r は更新されない
+        // なので 1 + = と操作しても 1 + 1 にはならない
+        this.setState({bx_r: this.state.cx_r ?? this.state.ax_r})
         this.calcUpdate()
-      }
-    } else {
-      // しかたなくばらして実行
-      // すでに使いにくくなっている
-      if (this.state.op_r != null) {
+      } else {
+        // とりあえず動かすには別の変数を用意し次のように書かなければならない
+        // 若干複雑なロジックなのに似た処理は calcUpdate() にもある
+        // Reactの仕様に引きづられてメンテしずらく負債となっているのがわかる
         let rhv = this.state.bx_r ?? this.state.cx_r ?? this.state.ax_r
         const value = this.calcUpdate2(this.state.ax_r, rhv, this.state.op_r)
         this.setState({ax_r: value})
-        this.setState({bx_r: null})
         this.setState({cx_r: rhv})
+        this.setState({bx_r: null})
       }
     }
   }
@@ -75,6 +79,7 @@ export default class CalcApp extends React.Component {
   calcUpdate = () => {
     const value = this.calcUpdate2(this.state.ax_r, this.state.bx_r, this.state.op_r)
     this.setState({ax_r: value})
+    this.setState({cx_r: this.state.bx_r})
     this.setState({bx_r: null})
   }
 
@@ -107,6 +112,12 @@ export default class CalcApp extends React.Component {
     } else if (this.state.ax_r != null) {
       this.setState({ax_r: this.state.ax_r / 100})
     }
+  }
+
+  // 以下は computed 相当だけどメモ化はできない
+
+  isClearHandle = () => {
+    return this.state.bx_r != null
   }
 
   resultString = () => {
@@ -151,7 +162,7 @@ export default class CalcApp extends React.Component {
           <CalcNumButton  label="2"  onClick={() => this.onNumberClickHandle(2)} />
           <CalcNumButton  label="3"  onClick={() => this.onNumberClickHandle(3)} />
           <CalcOpButton   label="+" onClick={() => this.onSetOpHandle("+")} />
-          <CalcNumButton  label="0"  onClick={() => this.onNumberClickHandle(0)} className="CalcNumButton is_2x" />
+          <CalcNumButton  label="0"  onClick={() => this.onNumberClickHandle(0)} is_wide />
           <CalcNumButton  label="00" onClick={this.onZeroZeroClick} />
           <CalcOpButton   label="="  onClick={this.onEqualHandle} />
         </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import CalcNumButton  from "./CalcNumButton"
 import CalcOpButton   from "./CalcOpButton"
@@ -10,6 +10,11 @@ export default (props) => {
   const [bx_r, set_bx_value] = useState(null)
   const [cx_r, set_cx_value] = useState(null)
   const [op_r, set_op_value] = useState(null)
+
+  // https://qiita.com/okumurakengo/items/999243dcfcd1d015e2d5#react-12
+  useEffect(() => {
+    document.title = ax_r.toString()
+  }, [ax_r])
 
   function onNumberClickHandle(plus_value) {
     if (op_r == null) {
@@ -35,10 +40,6 @@ export default (props) => {
     set_op_value(null)
   }
 
-  function isClearHandle() {
-    return bx_r != null
-  }
-
   function onSetOpHandle(op_r) {
     if (bx_r != null) {
       calcUpdate()
@@ -47,23 +48,23 @@ export default (props) => {
   }
 
   function onEqualHandle() {
-    if (false) {
-      // 次のように書きたかったが bx_r を設定しても stata.bx_r は更新されない
-      if (op_r != null) {
-        if (bx_r == null) {
-          set_bx_value(ax_r)
-        }
+    if (op_r != null) {
+      if (false) {
+        // React の問題のある仕様
+        // 本当は単に bx_r ??= cx_r ?? ax_r 相当を行いたい
+        // でも setState しても bx_r は更新されない
+        // なので 1 + = と操作しても 1 + 1 にはならない
+        set_bx_value(bx_r ?? cx_r ?? ax_r)
         calcUpdate()
-      }
-    } else {
-      // しかたなくばらして実行
-      // すでに使いにくくなっている
-      if (op_r != null) {
+      } else {
+        // とりあえず動かすには別の変数を用意し次のように書かなければならない
+        // 若干複雑なロジックなのに似た処理は calcUpdate() にもある
+        // Reactの仕様に引きづられてメンテしずらく負債となっているのがわかる
         let rhv = bx_r ?? cx_r ?? ax_r
         const value = calcUpdate2(ax_r, rhv, op_r)
         set_ax_value(value)
-        set_bx_value(null)
         set_cx_value(rhv)
+        set_bx_value(null)
       }
     }
   }
@@ -71,6 +72,7 @@ export default (props) => {
   function calcUpdate() {
     const value = calcUpdate2(ax_r, bx_r, op_r)
     set_ax_value(value)
+    set_cx_value(bx_r)
     set_bx_value(null)
   }
 
@@ -105,7 +107,12 @@ export default (props) => {
     }
   }
 
-  function resultString() {
+  // computed
+  // https://qiita.com/okumurakengo/items/999243dcfcd1d015e2d5#react-8
+
+  const isClearHandle = bx_r != null
+
+  const resultString = (() => {
     let str = null
     if (bx_r != null) {
       str = bx_r
@@ -113,21 +120,16 @@ export default (props) => {
       str = ax_r
     }
     return str
-  }
+  })()
 
   return (
     <div className="CalcApp">
-      {/* <CalcDisplay> */}
-      {/*   {(ax_r != null) && <span>{ax_r}</span>} */}
-      {/*   {(op_r != null) && <span>{op_r}</span>} */}
-      {/*   {(bx_r != null) && <span>{bx_r}</span>} */}
-      {/* </CalcDisplay> */}
-      {/* <CalcDisplay>{ax_r}, {op_r}, {bx_r} ({cx_r})</CalcDisplay> */}
+      {ax_r},{op_r},{bx_r}({cx_r})
 
-      <CalcDisplay>{resultString()}</CalcDisplay>
+      <CalcDisplay>{resultString}</CalcDisplay>
 
       <div className="CalcNumButtons">
-        {isClearHandle()
+        {isClearHandle
          ? <CalcDarkButton label="C"  onClick={onClearHandle} />
          : <CalcDarkButton label="AC"  onClick={onAllClearHandle} />
         }
@@ -146,7 +148,7 @@ export default (props) => {
         <CalcNumButton  label="2"  onClick={() => onNumberClickHandle(2)} />
         <CalcNumButton  label="3"  onClick={() => onNumberClickHandle(3)} />
         <CalcOpButton   label="+" onClick={() => onSetOpHandle("+")} />
-        <CalcNumButton  label="0"  onClick={() => onNumberClickHandle(0)} className="CalcNumButton is_2x" />
+        <CalcNumButton  label="0"  onClick={() => onNumberClickHandle(0)} is_wide />
         <CalcNumButton  label="00" onClick={onZeroZeroClick} />
         <CalcOpButton   label="="  onClick={onEqualHandle} />
       </div>

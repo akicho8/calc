@@ -10,19 +10,37 @@
 | vue-cli-js-option     | Vue 2.x       |     | Options API     | vue init webpack |     | `??` 動かず |
 | nuxt4-vue2            | Vue 2.x       |     | Options API     | create-nuxt-app  |     |             |
 | ?                     | Vue >= 3.0    |     | Composition API | vue create vite  | WIP |             |
-| vite-vue3-options-api | Vue >= 3.2    |     | script setup    | vue create vite  |     |             |
+| vite-vue3-composition-api | Vue >= 3.2    |     | script setup    | vue create vite  |     |             |
 | svelte-calc-js        | Svelte 3.44.0 | TS? |                 | vue create vite  |     | vite 2.9.0  |
+
+## react-calc-js-hooks
+
+- setState しても変数を即時更新できない(致命的)
+- computed 相当がない？
+- watch は componentDidMount と componentDidUpdate の定義(微妙)
+
+## react-calc-js-hooks
+
+- useState で setXXX を作ったとこで結局即時更新できない(致命的)
+- 単に変数に入れれば computed 相当になる
+- useEffect で watch 相当になる
 
 ## vue-cli-js-option
 
+- 変数は即時更新できる
 - `??` 演算子が解釈できない
-- 設定ファイルが多すぎるp
+  - babel 関連が古すぎ？
+- 設定ファイルが多すぎる
+- 非推奨
 
-![](image.png)
+## vite-vue3-composition-api
+
+- 変数は即時更新できる
+- .value 地獄
 
 ## nuxt4-vue2
 
-- `??` 演算子の解釈可
+- 変数は即時更新できる
 
 ### create-nuxt-app
 
@@ -40,6 +58,9 @@
 
 ## svelte-calc-js
 
+- 変数は即時更新できる
 - Emacs 用には svelte-mode.el が対応している
 - しかも何の問題もなく全体インデントが効く
 - 一番普通に書ける
+
+![](image.png)

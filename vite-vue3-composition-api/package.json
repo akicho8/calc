@@ -1,5 +1,5 @@
 {
-  "name": "vite-vue3-options-api",
+  "name": "vite-vue3-composition-api",
   "private": true,
   "version": "0.0.0",
   "scripts": {

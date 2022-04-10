@@ -6,7 +6,8 @@ export default class CalcNumButton extends React.Component {
   }
   render() {
     return (
-      <button className="CalcNumButton" {...this.props}>{this.props.label}</button>
+      // 常識的にこの書き方は動くけど間違えているはず
+      <button className={["CalcNumButton", this.props.is_wide ? "is_2x" : null].join(' ')} {...this.props}>{this.props.label}</button>
     )
   }
 }
