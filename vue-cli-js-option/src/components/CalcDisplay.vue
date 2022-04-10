@@ -1,11 +1,14 @@
-<script setup>
-</script>
-
 <template>
-  <div class="CalcDisplay">
-    <slot/>
-  </div>
+<div class="CalcDisplay">
+  <slot/>
+</div>
 </template>
+
+<script>
+export default {
+  name: "CalcDisplay",
+}
+</script>
 
 <style scoped>
 </style>

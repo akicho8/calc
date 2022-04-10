@@ -1,23 +1,38 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <CalcApp/>
+    <CalcApp/>
+    <CalcApp/>
+    <CalcApp/>
+    <CalcApp/>
+    <CalcApp/>
+    <CalcApp/>
+    <CalcApp/>
+    <CalcApp/>
     <router-view/>
   </div>
 </template>
 
 <script>
+import CalcApp from '@/components/CalcApp'
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    CalcApp,
+  },
 }
 </script>
 
 <style>
+html {
+  background-color: hsla(0, 0%, 20%);
+}
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0.5rem;
+  gap: 0.5rem;
 }
 </style>

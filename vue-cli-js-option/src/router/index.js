@@ -6,10 +6,10 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
-    {
-      path: '/',
-      name: 'CalcApp',
-      component: CalcApp,
-    }
+    // {
+    //   path: '/',
+    //   name: 'CalcApp',
+    //   component: CalcApp,
+    // }
   ]
 })

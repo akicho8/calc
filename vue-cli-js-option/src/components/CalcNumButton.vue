@@ -1,14 +1,17 @@
-<script setup>
-defineProps({
-  label: String,
-})
-</script>
-
 <template>
-  <button class="CalcNumButton">
-    {{label}}
-  </button>
+<button class="CalcNumButton" v-on="$listeners">
+  {{label}}
+</button>
 </template>
+
+<script>
+export default {
+  name: "CalcNumButton",
+  props: {
+    label: { type: String },
+  },
+}
+</script>
 
 <style scoped>
 </style>
