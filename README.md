@@ -11,12 +11,12 @@
 | nuxt4-vue2            | Vue 2.x       |     | Options API     | create-nuxt-app  |     |             |
 | ?                     | Vue >= 3.0    |     | Composition API | vue create vite  | WIP |             |
 | vite-vue3-options-api | Vue >= 3.2    |     | script setup    | vue create vite  |     |             |
-| svelte344-calc-app    | Svelte 3.44.0 | TS? |                 | vue create vite  | WIP | vite 2.9.0  |
+| svelte-calc-js        | Svelte 3.44.0 | TS? |                 | vue create vite  |     | vite 2.9.0  |
 
 ## vue-cli-js-option
 
 - `??` 演算子が解釈できない
-- 設定ファイルが多すぎる
+- 設定ファイルが多すぎるp
 
 ![](image.png)
 
@@ -38,7 +38,8 @@
 - Continuous integration: None
 - Version control system: None
 
-## svelte344-calc-app
+## svelte-calc-js
 
 - Emacs 用には svelte-mode.el が対応している
 - しかも何の問題もなく全体インデントが効く
+- 一番普通に書ける
