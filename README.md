@@ -40,34 +40,21 @@
 
 ## vue3-composition-api
 
+- 変数は即時更新できる
+- その一方で実体の参照や変更は .value に対して行う
+- this が不要になった
 - コンポーネントを components に登録しないといけない
-- 変数を return で返さないといけない。面倒な上に遠い。
+- 変数を return で返すのが二度手間な上に宣言から遠い
 
 ## vue3-composition-setup-api
 
-- 変数は即時更新できる
-- this が不要になった
-- その一方で実体の参照や変更は .value に対して行う
-- コンポーネントはインポートするだけで使える
+- コンポーネントはインポートするだけで使えるようになった
+- 変数を return で返す必要なくなった
 
 ## nuxt4-vue2
 
 - コンポーネントの内容は vue2-options-api とほぼ同じ
 - ただ `??` 演算子が動く
-
-### create-nuxt-app
-
-- create-nuxt-app v4.0.0
-- Programming language: JavaScript
-- Package manager: Npm
-- UI framework: None
-- Linting tools: None
-- Testing framework: Jest
-- Rendering mode: Single Page App
-- Deployment target: Static (Static/Jamstack hosting)
-- Development tools: jsconfig.json
-- Continuous integration: None
-- Version control system: None
 
 ## svelte-calc-js
 
