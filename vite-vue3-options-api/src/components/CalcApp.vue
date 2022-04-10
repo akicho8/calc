@@ -12,9 +12,7 @@ const bx_r = ref(null)
 const cx_r = ref(null)
 const op_r = ref(null)
 
-watch(ax_r, (new_v, old_v) => {
-  document.title = new_v.toString()
-})
+watch(ax_r, (new_v, old_v) => document.title = new_v.toString())
 
 function onNumberClickHandle(plus_value) {
   if (op_r.value == null) {
@@ -49,30 +47,15 @@ function onSetOpHandle(v) {
 
 function onEqualHandle() {
   if (op_r.value != null) {
-    // bx がなければ cx か ax を設定と自然に書ける
-    if (bx_r.value == null) {
-      bx_r.value = cx_r.value ?? ax_r.value
-    }
-    // ここで bx_r.value には確実に値が入っている
-    // React では入っていない
+    bx_r.value ??= cx_r.value ?? ax_r.value
     calcUpdate()
-    cx_r.value = bx_r.value
-    bx_r.value = null
   }
-  // // しかたなくばらして実行
-  // // すでに使いにくくなっている
-  //   if (op_r.value != null) {
-  //     let rhv = bx_r.value ?? cx_r.value ?? ax_r.value
-  //     const value = calcUpdate2(ax_r.value, rhv, op_r.value)
-  //     ax_r.value = value
-  //     bx_r.value = null
-  //     cx_r.value = rhv
-  //   }
 }
 
 function calcUpdate() {
   const value = calcUpdate2(ax_r.value, bx_r.value, op_r.value)
   ax_r.value = value
+  cx_r.value = bx_r.value
   bx_r.value = null
 }
 
@@ -124,7 +107,7 @@ const resultString = computed(() => {
 
 <template>
   <span class="CalcApp">
-    <!-- p {{ax_r}},{{op_r}},{{bx_r}} -->
+    p {{ax_r}},{{op_r}},{{bx_r}}({{cx_r}})
     <CalcDisplay>{{resultString}}</CalcDisplay>
     <div className="CalcNumButtons">
       <template v-if="isClearHandle">
