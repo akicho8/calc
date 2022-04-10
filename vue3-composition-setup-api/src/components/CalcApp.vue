@@ -107,7 +107,7 @@ const resultString = computed(() => {
 
 <template>
   <span class="CalcApp">
-    p {{ax_r}},{{op_r}},{{bx_r}}({{cx_r}})
+    <!-- p {{ax_r}},{{op_r}},{{bx_r}}({{cx_r}}) -->
     <CalcDisplay>{{resultString}}</CalcDisplay>
     <div className="CalcNumButtons">
       <template v-if="isClearHandle">
