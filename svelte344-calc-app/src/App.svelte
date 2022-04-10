@@ -14,15 +14,18 @@
   <CalcApp />
 </main>
 
-<svelte:head>
-  <style>
-    html {
-      background-color: hsla(0, 0%, 20%);
-    }
-  </style>
-</svelte:head>
+<!-- <svelte:head> -->
+<!--   <style> -->
+<!--     html { -->
+<!--       background-color: hsla(0, 0%, 20%); -->
+<!--     } -->
+<!--   </style> -->
+<!-- </svelte:head> -->
 
 <style>
+  :global(html) {
+    background-color: hsla(0, 0%, 20%);
+  }
   main {
     display: flex;
     flex-wrap: wrap;

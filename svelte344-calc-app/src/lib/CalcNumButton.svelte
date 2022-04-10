@@ -2,6 +2,7 @@
   export let label
   export let is_wide = false
 
+  // これはイケてない
   $: current_class = [
     "CalcNumButton",
     is_wide ? "is_2x" : "",
