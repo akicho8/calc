@@ -2,45 +2,48 @@
 
 電卓アプリ作成を通して各種フレームワークの進化・特徴・混沌を体験する
 
-| Name                  | FW            | 型  | 方法            | 導入             |     |             |
-|-----------------------|---------------|-----|-----------------|------------------|-----|-------------|
-| react-calc-js-class   | React         |     | Class           | create-react-app |     |             |
-| react-calc-ts-class   | React         | TS  | Class           | create-react-app |     |             |
-| react-calc-js-hooks   | React >= 16.8 |     | Hooks           | create-react-app |     |             |
-| vue-cli-js-option     | Vue 2.x       |     | Options API     | vue init webpack |     | `??` 動かず |
-| nuxt4-vue2            | Vue 2.x       |     | Options API     | create-nuxt-app  |     |             |
-| ?                     | Vue >= 3.0    |     | Composition API | vue create vite  | WIP |             |
+| Name                      | FW            | 型  | 方法            | 導入             |     |             |
+|---------------------------|---------------|-----|-----------------|------------------|-----|-------------|
+| react-calc-js-class       | React         |     | Class           | create-react-app |     |             |
+| react-calc-ts-class       | React         | TS  | Class           | create-react-app |     |             |
+| react-calc-js-hooks       | React >= 16.8 |     | Hooks           | create-react-app |     |             |
+| vue2-legacy-options-api   | Vue 2.x       |     | Options API     | vue init webpack |     | `??` 動かず |
+| nuxt4-vue2                | Vue 2.x       |     | Options API     | create-nuxt-app  |     |             |
+| ?                         | Vue >= 3.0    |     | Composition API | vue create vite  | WIP |             |
 | vite-vue3-composition-api | Vue >= 3.2    |     | script setup    | vue create vite  |     |             |
-| svelte-calc-js        | Svelte 3.44.0 | TS? |                 | vue create vite  |     | vite 2.9.0  |
+| svelte-calc-js            | Svelte 3.44.0 | TS? |                 | vue create vite  |     | vite 2.9.0  |
 
 ## react-calc-js-hooks
 
-- setState しても変数を即時更新できない(致命的)
-- computed 相当がない？
+- 変数を即時更新できない(致命傷)
 - watch は componentDidMount と componentDidUpdate の定義(微妙)
+- computed 相当がない？
 
 ## react-calc-js-hooks
 
-- useState で setXXX を作ったとこで結局即時更新できない(致命的)
-- 単に変数に入れれば computed 相当になる
+- 変数を即時更新できない(致命傷)
 - useEffect で watch 相当になる
+- 単に変数に入れれば computed 相当になる
+- this が不要になった
 
-## vue-cli-js-option
+## vue2-legacy-options-api
 
 - 変数は即時更新できる
-- `??` 演算子が解釈できない
-  - babel 関連が古すぎ？
-- 設定ファイルが多すぎる
-- 非推奨
+- `??` 演算子が使えない
+  - babel 関連が古い？
+- 設定ファイルが多すぎ
+- 本家から非推奨のお達し
 
 ## vite-vue3-composition-api
 
 - 変数は即時更新できる
-- .value 地獄
+- this が不要になった
+- その一方で .value 地獄になった
 
 ## nuxt4-vue2
 
-- 変数は即時更新できる
+- コンポーネントの内容は vue2-legacy-options-api とほぼ同じ
+- ただ `??` 演算子が動く
 
 ### create-nuxt-app
 

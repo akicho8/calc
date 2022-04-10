@@ -1,4 +1,4 @@
-# vue-cli-js-option
+# vue2-legacy-options-api
 
 > A Vue.js project
 
