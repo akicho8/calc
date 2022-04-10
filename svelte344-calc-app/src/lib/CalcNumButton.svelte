@@ -1,15 +1,9 @@
 <script>
   export let label
   export let is_wide = false
-
-  // これはイケてない
-  $: current_class = [
-    "CalcNumButton",
-    is_wide ? "is_2x" : "",
-  ].join(" ")
 </script>
 
-<button class={current_class} on:click>
+<button class="CalcNumButton" class:is_2x={is_wide} on:click>
   {label}
 </button>
 
