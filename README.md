@@ -32,9 +32,9 @@
 ## react-hooks-js
 
 - 短所
-  - 結局、変数を即時更新できない
-  - this が不要になった
+  - ここに来ても変数を即時更新できない
 - 長所
+  - this 不要
   - useEffect で watch
   - 単に変数に入れれば computed
   - `npm i -g sass` だけで sass が使えるようになった
@@ -52,6 +52,7 @@
 
 - 長所
   - 変数は即時更新できる
+  - 外部ライブラリが充実
 
 ## nuxt4-vue2
 
@@ -91,6 +92,7 @@
   - Emacs 用には svelte-mode.el が対応している
   - しかも何の問題もなく全体インデントが効く
   - .svelteファイルはHTMLのサブセット
+  - template タグすら不要でシンプルなものはHTMLの断片になる
   - 普通に書ける
 
 ![](image.png)
