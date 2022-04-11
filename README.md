@@ -2,16 +2,16 @@
 
 電卓アプリ作成を通して各種フレームワークの進化・特徴・混沌を体験する
 
-| Name                       | FW            | 型  | 方法            | 導入             |     |             |
-|----------------------------|---------------|-----|-----------------|------------------|-----|-------------|
-| react-calc-js-class        | React         |     | Class           | create-react-app |     |             |
-| react-calc-ts-class        | React         | TS  | Class           | create-react-app |     |             |
-| react-calc-js-hooks        | React >= 16.8 |     | Hooks           | create-react-app |     |             |
-| vue2-options-api           | Vue 2.x       |     | Options API     | vue init webpack |     | `??` 動かず |
-| nuxt4-vue2                 | Vue 2.x       |     | Options API     | create-nuxt-app  |     |             |
-| vue3-composition-api       | Vue >= 3.0    |     | Composition API | vue create vite  | WIP |             |
-| vue3-composition-setup-api | Vue >= 3.2    |     | script setup    | vue create vite  |     |             |
-| svelte-calc-js             | Svelte 3.44.0 | TS? |                 | vue create vite  |     | vite 2.9.0  |
+|    | Name                       | FW            | 型  | 方法            | 導入             |             |
+|----|----------------------------|---------------|-----|-----------------|------------------|-------------|
+|    | react-calc-js-class        | React         |     | Class           | create-react-app |             |
+|    | react-calc-ts-class        | React         | TS  | Class           | create-react-app |             |
+| ○ | react-calc-js-hooks        | React >= 16.8 |     | Hooks           | create-react-app |             |
+| △ | vue2-options-api           | Vue 2.x       |     | Options API     | vue init webpack | `??` 動かず |
+| △ | nuxt4-vue2                 | Vue 2.x       |     | Options API     | create-nuxt-app  |             |
+|    | vue3-composition-ugly-api  | Vue >= 3.0    |     | Composition API | vue create vite  |             |
+| ◎ | vue3-composition-setup-api | Vue >= 3.2    |     | script setup    | vue create vite  |             |
+| ☆ | svelte-calc-js             | Svelte 3.44.0 | TS? |                 | vue create vite  | vite 2.9.0  |
 
 ## react-calc-js-class
 
@@ -43,18 +43,19 @@
 - コンポーネントの内容は vue2-options-api とほぼ同じ
 - `??` 演算子が動く
 
-## vue3-composition-api
+## vue3-composition-ugly-api
 
 - 変数は即時更新できる
 - その一方で実体の参照や変更は .value に対して行う
 - this が不要になった
 - コンポーネントを components に登録しないといけない
-- 変数を return で返すのが二度手間な上に宣言から遠い
+- 何から何まで最後に return で返すのが二度手間な上に宣言から遠い
 
 ## vue3-composition-setup-api
 
+- vue3-composition-ugly-api のストレスがかなり軽減された
 - コンポーネントはインポートするだけで使えるようになった
-- 変数を return で返す必要なくなった
+- 最後に return で返す必要なくなった
 
 ## svelte-calc-js
 

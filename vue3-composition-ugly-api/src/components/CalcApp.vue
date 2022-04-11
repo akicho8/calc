@@ -1,6 +1,6 @@
 <template>
   <span class="CalcApp">
-    p {{ax_r}},{{op_r}},{{bx_r}}({{cx_r}})
+    <!-- p {{ax_r}},{{op_r}},{{bx_r}}({{cx_r}}) -->
     <CalcDisplay>{{resultString}}</CalcDisplay>
     <div className="CalcNumButtons">
       <template v-if="isClearHandle">
@@ -146,11 +146,25 @@ export default {
       return str
     })
 
+    // 二度手間
+    // これなら Options API の方がよかった
     return {
       ax_r,
       bx_r,
       cx_r,
       op_r,
+      onNumberClickHandle,
+      onZeroZeroClick,
+      onClearHandle,
+      onAllClearHandle,
+      onSetOpHandle,
+      onEqualHandle,
+      calcUpdate,
+      calcUpdate2,
+      onSignToggle,
+      onParcentage,
+      isClearHandle,
+      resultString,
     }
   },
 }
