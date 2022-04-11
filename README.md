@@ -87,7 +87,7 @@
   - Emacs 用には svelte-mode.el が対応している
     - 何の問題もなく全体インデントが効く
   - .svelteファイルはHTMLのサブセット
-    - template タグすら不要でシンプルなものはHTMLの断片として切り出せる
+    - template タグすら不要なのでHTMLの断片として切り出せる
   - 普通に書ける
 
 ![](image.png)
