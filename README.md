@@ -37,8 +37,7 @@
   - this 不要
   - useEffect で watch
   - 単に変数に入れれば computed
-  - `npm i -g sass` だけで sass が使えるようになった
-    - これは vite のおかげか？
+  - `npm i -g sass` だけで sass が使える
 
 ## vue2-options-api
 
@@ -46,9 +45,9 @@
   - `??` 演算子でエラー
     - babel 関連が古い？
   - 設定ファイルが多すぎ
-  - 本家から非推奨のお達し
   - 関心毎単位で書けない
     - mixins しまくる手はある
+  - 本家から非推奨のお達し
 
 - 長所
   - 変数は即時更新できる
