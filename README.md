@@ -1,18 +1,21 @@
-# 電卓アプリ集
+# フロントエンド・フレーワーク比較
 
 電卓アプリ作成を通して各種フレームワークの違いを体験する
 
-|    | Name                        | FW            | 型  | 方法            | 導入             |             |
-|----|-----------------------------|---------------|-----|-----------------|------------------|-------------|
-| × | react-class-js              | React         |     | Class           | create-react-app |             |
-| × | react-class-tsx             | React         | TS  | Class           | create-react-app |             |
-| ○ | react-hooks-js              | React >= 16.8 |     | Hooks           | create-react-app |             |
-| △ | preact-hooks-jsx            | Preact        |     | Hooks           | npm create vite  |             |
-| △ | vue2-options-api            | Vue 2.x       |     | Options API     | vue init webpack | `??` 動かず |
-| △ | nuxt4-vue2                  | Vue 2.x       |     | Options API     | create-nuxt-app  |             |
-| × | vue3-composition-return-api | Vue >= 3.0    |     | Composition API | npm create vite  |             |
-| ◎ | vue3-composition-setup-api  | Vue >= 3.2    |     | script setup    | npm create vite  |             |
-| ☆ | svelte-simple-js            | Svelte 3.44.0 | TS? |                 | npm create vite  | vite 2.9.0  |
+|    | Name                        | FW            | 型  | 方法            | 変 | 導入             |             | URL                                     |
+|----|-----------------------------|---------------|-----|-----------------|----|------------------|-------------|-----------------------------------------|
+| × | react-class-js              | React         |     | Class           | × | create-react-app |             | [URL](react-class-js/dist)              |
+| × | react-class-tsx             | React         | TS  | Class           | × | create-react-app |             | [URL](react-class-tsx/dist)             |
+| ○ | react-hooks-js              | React >= 16.8 |     | Hooks           | × | create-react-app |             | [URL](react-hooks-js/dist)              |
+| △ | preact-hooks-jsx            | Preact        |     | Hooks           | × | npm create vite  |             | [URL](preact-hooks-jsx/dist)            |
+| △ | vue2-options-api            | Vue 2.x       |     | Options API     | ○ | vue init webpack | `??` 動かず | [URL](vue2-options-api/dist)            |
+| △ | nuxt4-vue2                  | Vue 2.x       |     | Options API     | ○ | create-nuxt-app  |             | [URL](nuxt4-vue2/dist)                  |
+| × | vue3-composition-return-api | Vue >= 3.0    |     | Composition API | ○ | npm create vite  |             | [URL](vue3-composition-return-api/dist) |
+| ◎ | vue3-composition-setup-api  | Vue >= 3.2    |     | script setup    | ○ | npm create vite  |             | [URL](vue3-composition-setup-api/dist)  |
+| ☆ | svelte-simple-js            | Svelte 3.44.0 | TS? |                 | ○ | npm create vite  | vite 2.9.0  | [URL](svelte-simple-js/dist)            |
+|    | vanilla-simple-app          |               |     |                 |    | npm create vite  |             | [URL](vanilla-simple-app/dist)          |
+
+- 変 = 変数を即時更新できる
 
 ## react-class-js
 
@@ -42,10 +45,12 @@
 
 ## preact-hooks-jsx
 
-- ビルドサイズを減らすことに特化
-- よく使う機能だけに絞っている
-- React の 1/10 ぐらいになる
 - react-hooks-js と同じ書き方
+
+- 短所
+  - よく使わない機能がない
+- 長所
+  - ビルドサイズが React の 1/10 ぐらい
 
 ## vue2-options-api
 
@@ -90,12 +95,23 @@
 
 - 短所
   - 外部ライブラリが少ない
+    - 今後増えそう
 - 長所
   - 変数は即時更新できる
   - Emacs 用には svelte-mode.el が対応している
     - 何の問題もなく全体インデントが効く
+  - 自然に書ける
+    - Vue3 Composition API (script setup 型) をさらに進めた形
   - .svelteファイルはHTMLのサブセット
-    - template タグすら不要なのでHTMLの断片として切り出せる
-  - 普通に書ける
+    - template タグすら不要
+    - HTMLの断片として切り出せる
+
+## vanilla-simple-app
+
+- 短所
+  - js のトランスパイルなし
+- 長所
+  - `npm i -g sass` だけで sass が使える
+  - CSS (sass) の検証に便利
 
 ![](image.png)

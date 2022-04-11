@@ -1,0 +1,11 @@
+#!/bin/sh
+(cd nuxt4-vue2                  && npm run build)
+(cd preact-hooks-jsx            && npm run build)
+(cd react-class-js              && npm run build)
+(cd react-class-tsx             && npm run build)
+(cd react-hooks-js              && npm run build)
+(cd svelte-simple-js            && npm run build)
+(cd vanilla-simple-app                 && npm run build)
+(cd vue2-options-api            && npm run build)
+(cd vue3-composition-return-api && npm run build)
+(cd vue3-composition-setup-api  && npm run build)
