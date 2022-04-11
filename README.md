@@ -15,39 +15,53 @@
 
 ## react-class-js
 
-- 変数を即時更新できない(致命傷)
-- watch は componentDidMount と componentDidUpdate の定義(微妙)
-- computed 相当がない？
+- 短所
+  - 変数を即時更新できない
+  - watch は componentDidMount と componentDidUpdate の定義
+  - computed 相当がない？
+  - class 属性の追加が面倒
+  - jsx内の制御構文がバッドノウハウ
+- 長所
+  - インデントが変にならない
+  - テンプレート内の独自構文を別に覚える必要がない
 
 ## react-class-tsx
 
-- react-class-js を TypeScript で動くようにしたもの
+- react-class-js を TypeScript で動くようにしただけのもので基本同じ
 
 ## react-hooks-js
 
-- 変数を即時更新できない(致命傷)
-- useEffect で watch 相当になる
-- 単に変数に入れれば computed 相当になる
-- this が不要になった
+- 短所
+  - 結局、変数を即時更新できない
+  - this が不要になった
+- 長所
+  - useEffect で watch
+  - 単に変数に入れれば computed
+  - `npm i -g sass` だけで sass が使えるようになった
+    - これは vite のおかげか？
 
 ## vue2-options-api
 
-- 変数は即時更新できる
-- `??` 演算子でエラー
-  - babel 関連が古い？
-- 設定ファイルが多すぎ
-- 本家から非推奨のお達し
+- 短所
+  - `??` 演算子でエラー
+    - babel 関連が古い？
+  - 設定ファイルが多すぎ
+  - 本家から非推奨のお達し
+  - 関心毎単位で書けない
+    - mixins しまくる手はある
+
+- 長所
+  - 変数は即時更新できる
 
 ## nuxt4-vue2
 
 - コンポーネントの内容は vue2-options-api とほぼ同じ
-- `??` 演算子が動く
-
-## vue3-composition-return-api
 
 - 長所
-  - 変数は即時更新できる
-  - this が不要になった
+  - `??` 演算子が動く
+  - コンポーネントは import すら不要
+
+## vue3-composition-return-api
 
 - 短所
   - .value だらけ
@@ -55,18 +69,28 @@
   - 何から何まで最後に return で返すのは二度手間
   - しかも宣言から遠すぎて登録を忘れる
 
+- 長所
+  - 変数は即時更新できる
+  - this が不要になった
+  - template直下はタグ1つの縛りがなくなった
+
 ## vue3-composition-setup-api
 
-- vue3-composition-return-api のストレスがかなり軽減された
-- コンポーネントはインポートするだけで使えるようになった
-- 最後に return で返す必要なくなった
+- 長所
+  - vue3-composition-return-api のストレスが軽減
+  - コンポーネントは import するだけで使える
+  - 最後に return で返す必要なくなった
 
 ## svelte-simple-js
 
-- 変数は即時更新できる
-- Emacs 用には svelte-mode.el が対応している
-- しかも何の問題もなく全体インデントが効く
-- 一番普通に書ける
-- .svelteファイルはHTMLのサブセット
+- 短所
+  - 外部ライブラリが充足してない
+
+- 長所
+  - 変数は即時更新できる
+  - Emacs 用には svelte-mode.el が対応している
+  - しかも何の問題もなく全体インデントが効く
+  - .svelteファイルはHTMLのサブセット
+  - 普通に書ける
 
 ![](image.png)
