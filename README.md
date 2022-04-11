@@ -68,15 +68,15 @@
   - しかも宣言から遠すぎて登録を忘れる
 - 長所
   - 変数は即時更新できる
-  - this が不要になった
-  - template直下はタグ1つの縛りがなくなった
+  - this 不要
+  - template直下はタグ1つの縛りなし
 
 ## vue3-composition-setup-api
 
 - 長所
-  - vue3-composition-return-api のストレスが軽減
+  - vue3-composition-return-api の問題が解消
   - コンポーネントは import するだけで使える
-  - 最後に return で返す必要なくなった
+  - 最後に return で返す必要なし
 
 ## svelte-simple-js
 
