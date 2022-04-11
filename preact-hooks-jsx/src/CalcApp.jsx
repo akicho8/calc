@@ -4,8 +4,9 @@ import CalcNumButton  from "./CalcNumButton"
 import CalcOpButton   from "./CalcOpButton"
 import CalcDarkButton from "./CalcDarkButton"
 import CalcDisplay    from "./CalcDisplay"
+import "./CalcApp.sass"
 
-export default (props) => {
+export function CalcApp() {
   const [ax_r, set_ax_r] = useState(0)
   const [bx_r, set_bx_r] = useState(null)
   const [cx_r, set_cx_r] = useState(null)
@@ -124,7 +125,7 @@ export default (props) => {
 
   return (
     <div className="CalcApp">
-      {ax_r},{op_r},{bx_r}({cx_r})
+      {/* {ax_r},{op_r},{bx_r}({cx_r}) */}
 
       <CalcDisplay>{resultString}</CalcDisplay>
 

@@ -1,17 +1,18 @@
 # 電卓アプリ集
 
-電卓アプリ作成を通して各種フレームワークの進化・特徴・混沌を体験する
+電卓アプリ作成を通して各種フレームワークの違いを体験する
 
 |    | Name                        | FW            | 型  | 方法            | 導入             |             |
 |----|-----------------------------|---------------|-----|-----------------|------------------|-------------|
 | × | react-class-js              | React         |     | Class           | create-react-app |             |
 | × | react-class-tsx             | React         | TS  | Class           | create-react-app |             |
 | ○ | react-hooks-js              | React >= 16.8 |     | Hooks           | create-react-app |             |
+| △ | preact-hooks-jsx            | Preact        |     | Hooks           | npm create vite  |             |
 | △ | vue2-options-api            | Vue 2.x       |     | Options API     | vue init webpack | `??` 動かず |
 | △ | nuxt4-vue2                  | Vue 2.x       |     | Options API     | create-nuxt-app  |             |
-| × | vue3-composition-return-api | Vue >= 3.0    |     | Composition API | vue create vite  |             |
-| ◎ | vue3-composition-setup-api  | Vue >= 3.2    |     | script setup    | vue create vite  |             |
-| ☆ | svelte-simple-js            | Svelte 3.44.0 | TS? |                 | vue create vite  | vite 2.9.0  |
+| × | vue3-composition-return-api | Vue >= 3.0    |     | Composition API | npm create vite  |             |
+| ◎ | vue3-composition-setup-api  | Vue >= 3.2    |     | script setup    | npm create vite  |             |
+| ☆ | svelte-simple-js            | Svelte 3.44.0 | TS? |                 | npm create vite  | vite 2.9.0  |
 
 ## react-class-js
 
@@ -38,6 +39,11 @@
   - this 不要
   - useEffect で watch
   - 単に変数に入れれば computed
+
+## preact-hooks-jsx
+
+- ビルドサイズを小さくすることを目的としたフレームワーク
+- react-hooks-js と同じ書き方
 
 ## vue2-options-api
 
