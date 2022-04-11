@@ -45,11 +45,15 @@
 
 ## vue3-composition-return-api
 
-- 変数は即時更新できる
-- その一方で実体の参照や変更は .value に対して行う
-- this が不要になった
-- コンポーネントを components に登録しないといけない
-- 何から何まで最後に return で返すのが二度手間な上に宣言から遠い
+- 長所
+  - 変数は即時更新できる
+  - this が不要になった
+
+- 短所
+  - .value だらけ
+  - コンポーネントは components に登録しないといけない
+  - 何から何まで最後に return で返すのは二度手間
+  - しかも宣言から遠すぎて登録を忘れる
 
 ## vue3-composition-setup-api
 
@@ -63,5 +67,6 @@
 - Emacs 用には svelte-mode.el が対応している
 - しかも何の問題もなく全体インデントが効く
 - 一番普通に書ける
+- .svelteファイルはHTMLのサブセット
 
 ![](image.png)
