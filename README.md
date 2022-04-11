@@ -4,10 +4,10 @@
 
 |    | Name                        | FW            | 型  | 方法            | 変 | 導入             |             | URL                                     |
 |----|-----------------------------|---------------|-----|-----------------|----|------------------|-------------|-----------------------------------------|
-| × | react-class-js              | React         |     | Class           | × | create-react-app |             | [URL](react-class-js/dist)              |
-| × | react-class-tsx             | React         | TS  | Class           | × | create-react-app |             | [URL](react-class-tsx/dist)             |
-| ○ | react-hooks-js              | React >= 16.8 |     | Hooks           | × | create-react-app |             | [URL](react-hooks-js/dist)              |
-| △ | preact-hooks-jsx            | Preact        |     | Hooks           | × | npm create vite  |             | [URL](preact-hooks-jsx/dist)            |
+| × | react-class-js              | React         |     | Class           | × | create-react-app |             | [URL](react-class-js/build)             |
+| × | react-class-tsx             | React         | TS  | Class           | × | create-react-app |             | [URL](react-class-tsx/build)            |
+| ○ | react-hooks-js              | React >= 16.8 |     | Hooks           | × | create-react-app |             | [URL](react-hooks-js/build)             |
+| △ | preact-hooks-jsx            | Preact        |     | Hooks           | × | npm create vite  |             | [URL](preact-hooks-jsx/build)           |
 | △ | vue2-options-api            | Vue 2.x       |     | Options API     | ○ | vue init webpack | `??` 動かず | [URL](vue2-options-api/dist)            |
 | △ | nuxt4-vue2                  | Vue 2.x       |     | Options API     | ○ | create-nuxt-app  |             | [URL](nuxt4-vue2/dist)                  |
 | × | vue3-composition-return-api | Vue >= 3.0    |     | Composition API | ○ | npm create vite  |             | [URL](vue3-composition-return-api/dist) |
