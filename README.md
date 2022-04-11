@@ -24,6 +24,7 @@
 - 長所
   - インデントが変にならない
   - テンプレート内の独自構文を別に覚える必要がない
+  - `npm i -g sass` だけで sass が使える
 
 ## react-class-tsx
 
@@ -37,7 +38,6 @@
   - this 不要
   - useEffect で watch
   - 単に変数に入れれば computed
-  - `npm i -g sass` だけで sass が使える
 
 ## vue2-options-api
 
