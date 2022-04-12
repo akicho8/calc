@@ -19,18 +19,18 @@
 - Size = ビルド後のサイズ
 - vanilla-simple-app は電卓実装してない空の状態
 
-## Getter / Setter の違い 
+## Getter / Setter の違い
 
-| FW         | 変 | Getter         | Setter                    |
-|------------|----|----------------|---------------------------|
-| React      | × | this.state.foo | this.setState({foo: xxx}) |
-| React 16.8 | × | foo            | setFoo(xxx)               |
-| Solid      | ○ | foo()          | setFoo(xxx)               |
-| Vue 2      | ○ | this.foo       | this.foo = xxx            |
-| Vue 3      | ○ | foo.value      | foo.value = xxx           |
-| Svelte     | ○ | foo            | foo = xxx                 |
+| FW         | 即 | Getter         | Setter                  | 定義                                  |
+|------------|----|----------------|-------------------------|---------------------------------------|
+| React      | × | this.state.foo | this.setState({foo: 1}) | this.state = { foo: 0 }               |
+| React 16.8 | × | foo            | setFoo(1)               | const [foo, setFoo] = useState(0)     |
+| Solid      | ○ | foo()          | setFoo(1)               | const [foo, setFoo] = createSignal(0) |
+| Vue 2      | ○ | this.foo       | this.foo = 1            | data() { return { foo: 0 } }          |
+| Vue 3      | ○ | foo.value      | foo.value = 1           | const foo = ref(0)                    |
+| Svelte     | ○ | foo            | foo = 1                 | let foo = 0                           |
 
-- 変 = 変数を即時更新できる
+- 即 = 変数を即時更新できる
 
 ## react-class-js
 
