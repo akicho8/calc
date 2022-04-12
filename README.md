@@ -15,6 +15,7 @@
 | ◎ | vue3-composition-setup-api  | Vue >= 3.2    | 72K   |     | script setup    | npm create vite                |
 | ☆ | svelte-simple-js            | Svelte 3.44.0 | 28K   | TS? |                 | npm create vite                |
 |    | vanilla-simple-app          | なし          | (16K) |     |                 | npm create vite                |
+|    | [WIP] my-lite-app           | lit           |       |     |                 |                                |
 
 - Size = ビルド後のサイズ
 - vanilla-simple-app は電卓実装してない空の状態
