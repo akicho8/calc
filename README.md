@@ -2,18 +2,19 @@
 
 電卓アプリ作成を通して各種フレームワークの違いを体験する
 
-|    | Name                        | FW            | Size  | 型  | 方法            | 変 | 導入             |             |
-|----|-----------------------------|---------------|-------|-----|-----------------|----|------------------|-------------|
-| × | react-class-js              | React         | 596K  |     | Class           | × | create-react-app |             |
-| × | react-class-tsx             | React         | 592K  | TS  | Class           | × | create-react-app |             |
-| ○ | react-hooks-js              | React >= 16.8 | 596K  |     | Hooks           | × | create-react-app |             |
-| △ | preact-hooks-jsx            | Preact        | 36K   |     | Hooks           | × | npm create vite  |             |
-| △ | vue2-options-api            | Vue 2.x       | 824K  |     | Options API     | ○ | vue init webpack | `??` 動かず |
-| △ | nuxt4-vue2                  | Vue 2.x       | 324K  |     | Options API     | ○ | create-nuxt-app  |             |
-| × | vue3-composition-return-api | Vue >= 3.0    | 72K   |     | Composition API | ○ | npm create vite  |             |
-| ◎ | vue3-composition-setup-api  | Vue >= 3.2    | 72K   |     | script setup    | ○ | npm create vite  |             |
-| ☆ | svelte-simple-js            | Svelte 3.44.0 | 28K   | TS? |                 | ○ | npm create vite  | vite 2.9.0  |
-|    | vanilla-simple-app          | なし          | (16K) |     |                 |    | npm create vite  |             |
+|    | Name                        | FW            | Size  | 型  | 方法            | 変 | 導入                           | getter         | setter                   |
+|----|-----------------------------|---------------|-------|-----|-----------------|----|--------------------------------|----------------|--------------------------|
+| × | react-class-js              | React         | 596K  |     | Class           | × | create-react-app               | this.state.foo | this.setState(foo: xxx)) |
+| × | react-class-tsx             | React         | 592K  | TS  | Class           | × | create-react-app               | this.state.foo | this.setState(foo: xxx)) |
+| ○ | react-hooks-js              | React >= 16.8 | 596K  |     | Hooks           | × | create-react-app               | foo            | setFoo(xxx)              |
+| △ | preact-hooks-jsx            | Preact        | 36K   |     | Hooks           | × | npm create vite                | foo            | setFoo(xxx)              |
+| ☆ | solid-simple-js             | Solid 1.3.13  | 40K   |     | Function        | ○ | npx degit solidjs/templates/js | foo()          | setFoo(xxx)              |
+| △ | vue2-options-api            | Vue 2.x       | 824K  |     | Options API     | ○ | vue init webpack               | this.foo       | this.foo = xxx           |
+| △ | nuxt4-vue2                  | Vue 2.x       | 324K  |     | Options API     | ○ | create-nuxt-app                | this.foo       | this.foo = xxx           |
+| × | vue3-composition-return-api | Vue >= 3.0    | 72K   |     | Composition API | ○ | npm create vite                | foo.value      | foo.value = xxx          |
+| ◎ | vue3-composition-setup-api  | Vue >= 3.2    | 72K   |     | script setup    | ○ | npm create vite                | foo.value      | foo.value = xxx          |
+| ☆ | svelte-simple-js            | Svelte 3.44.0 | 28K   | TS? |                 | ○ | npm create vite                | foo            | foo = xxx                |
+|    | vanilla-simple-app          | なし          | (16K) |     |                 |    | npm create vite                |                |                          |
 
 - Size = ビルド後のサイズ
 - 変 = 変数を即時更新できる
@@ -23,10 +24,13 @@
 
 - 短所
   - 変数を即時更新できない
+    - 回避するためだけにメンテしづらいコードが増える
   - watch は componentDidMount と componentDidUpdate の定義
   - computed 相当がない？
-  - class 属性の追加が面倒
+    - createMemo を使う？
+  - class 属性の切り替えが難しい
   - jsx内の制御構文がバッドノウハウ
+  - ビューとスタイルとの分断
 - 長所
   - インデントが変にならない
   - テンプレート内の独自構文を別に覚える必要がない
@@ -54,6 +58,19 @@
 - 長所
   - ビルドサイズが React の 0.06 倍 (Svelteの方が軽い)
 
+## solid-simple-js
+
+- 短所
+  - なぜか `classList={{foo: props.xxx}}` が動かん
+- 長所
+  - React Hooks のコードから移行しやすい
+  - React Hooks の問題点が解消
+  - 変数は即時更新できる
+  - 同じ値をセットしたときも更新したと見なすオプションがある(これ欲しかった)
+    - `const [getValue, setValue] = createSignal(initialValue, { equals: false })`
+  - class の切り替え方法が少し改善された
+    - `classList={{foo: true, bar: false}}` と書ける
+
 ## vue2-options-api
 
 - 短所
@@ -66,6 +83,7 @@
 - 長所
   - 変数は即時更新できる
   - 外部ライブラリが充実
+  - ビューとスタイルを一緒に書ける (SFC)
 
 ## nuxt4-vue2
 
