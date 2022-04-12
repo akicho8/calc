@@ -2,23 +2,37 @@
 
 電卓アプリ作成を通して各種フレームワークの違いを体験する
 
-|    | Name                        | FW            | Size  | 型  | 方法            | 変 | 導入                           | getter         | setter                   |
-|----|-----------------------------|---------------|-------|-----|-----------------|----|--------------------------------|----------------|--------------------------|
-| × | react-class-js              | React         | 596K  |     | Class           | × | create-react-app               | this.state.foo | this.setState(foo: xxx)) |
-| × | react-class-tsx             | React         | 592K  | TS  | Class           | × | create-react-app               | this.state.foo | this.setState(foo: xxx)) |
-| ○ | react-hooks-js              | React >= 16.8 | 596K  |     | Hooks           | × | create-react-app               | foo            | setFoo(xxx)              |
-| △ | preact-hooks-jsx            | Preact        | 36K   |     | Hooks           | × | npm create vite                | foo            | setFoo(xxx)              |
-| ☆ | solid-simple-js             | Solid 1.3.13  | 40K   |     | Function        | ○ | npx degit solidjs/templates/js | foo()          | setFoo(xxx)              |
-| △ | vue2-options-api            | Vue 2.x       | 824K  |     | Options API     | ○ | vue init webpack               | this.foo       | this.foo = xxx           |
-| △ | nuxt4-vue2                  | Vue 2.x       | 324K  |     | Options API     | ○ | create-nuxt-app                | this.foo       | this.foo = xxx           |
-| × | vue3-composition-return-api | Vue >= 3.0    | 72K   |     | Composition API | ○ | npm create vite                | foo.value      | foo.value = xxx          |
-| ◎ | vue3-composition-setup-api  | Vue >= 3.2    | 72K   |     | script setup    | ○ | npm create vite                | foo.value      | foo.value = xxx          |
-| ☆ | svelte-simple-js            | Svelte 3.44.0 | 28K   | TS? |                 | ○ | npm create vite                | foo            | foo = xxx                |
-|    | vanilla-simple-app          | なし          | (16K) |     |                 |    | npm create vite                |                |                          |
+## Directory
+
+|    | Directory                   | FW            | Size  | 型  | 方法            | 導入                           |
+|----|-----------------------------|---------------|-------|-----|-----------------|--------------------------------|
+| × | react-class-js              | React         | 596K  |     | Class           | create-react-app               |
+| × | react-class-tsx             | React         | 592K  | TS  | Class           | create-react-app               |
+| ○ | react-hooks-js              | React >= 16.8 | 596K  |     | Hooks           | create-react-app               |
+| △ | preact-hooks-jsx            | Preact        | 36K   |     | Hooks           | npm create vite                |
+| ☆ | solid-simple-js             | Solid 1.3.13  | 40K   |     | Function        | npx degit solidjs/templates/js |
+| △ | vue2-options-api            | Vue 2.x       | 824K  |     | Options API     | vue init webpack               |
+| △ | nuxt4-vue2                  | Vue 2.x       | 324K  |     | Options API     | create-nuxt-app                |
+| × | vue3-composition-return-api | Vue >= 3.0    | 72K   |     | Composition API | npm create vite                |
+| ◎ | vue3-composition-setup-api  | Vue >= 3.2    | 72K   |     | script setup    | npm create vite                |
+| ☆ | svelte-simple-js            | Svelte 3.44.0 | 28K   | TS? |                 | npm create vite                |
+|    | vanilla-simple-app          | なし          | (16K) |     |                 | npm create vite                |
 
 - Size = ビルド後のサイズ
-- 変 = 変数を即時更新できる
 - vanilla-simple-app は電卓実装してない空の状態
+
+## Getter / Setter の違い 
+
+| FW         | 変 | Getter         | Setter                    |
+|------------|----|----------------|---------------------------|
+| React      | × | this.state.foo | this.setState({foo: xxx}) |
+| React 16.8 | × | foo            | setFoo(xxx)               |
+| Solid      | ○ | foo()          | setFoo(xxx)               |
+| Vue 2      | ○ | this.foo       | this.foo = xxx            |
+| Vue 3      | ○ | foo.value      | foo.value = xxx           |
+| Svelte     | ○ | foo            | foo = xxx                 |
+
+- 変 = 変数を即時更新できる
 
 ## react-class-js
 
