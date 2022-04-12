@@ -2,20 +2,22 @@
 
 電卓アプリ作成を通して各種フレームワークの違いを体験する
 
-|    | Name                        | FW            | 型  | 方法            | 変 | 導入             |             |
-|----|-----------------------------|---------------|-----|-----------------|----|------------------|-------------|
-| × | react-class-js              | React         |     | Class           | × | create-react-app |             |
-| × | react-class-tsx             | React         | TS  | Class           | × | create-react-app |             |
-| ○ | react-hooks-js              | React >= 16.8 |     | Hooks           | × | create-react-app |             |
-| △ | preact-hooks-jsx            | Preact        |     | Hooks           | × | npm create vite  |             |
-| △ | vue2-options-api            | Vue 2.x       |     | Options API     | ○ | vue init webpack | `??` 動かず |
-| △ | nuxt4-vue2                  | Vue 2.x       |     | Options API     | ○ | create-nuxt-app  |             |
-| × | vue3-composition-return-api | Vue >= 3.0    |     | Composition API | ○ | npm create vite  |             |
-| ◎ | vue3-composition-setup-api  | Vue >= 3.2    |     | script setup    | ○ | npm create vite  |             |
-| ☆ | svelte-simple-js            | Svelte 3.44.0 | TS? |                 | ○ | npm create vite  | vite 2.9.0  |
-|    | vanilla-simple-app          |               |     |                 |    | npm create vite  |             |
+|    | Name                        | Size  | FW            | 型  | 方法            | 変 | 導入             |             |
+|----|-----------------------------|-------|---------------|-----|-----------------|----|------------------|-------------|
+| × | react-class-js              | 596K  | React         |     | Class           | × | create-react-app |             |
+| × | react-class-tsx             | 592K  | React         | TS  | Class           | × | create-react-app |             |
+| ○ | react-hooks-js              | 596K  | React >= 16.8 |     | Hooks           | × | create-react-app |             |
+| △ | preact-hooks-jsx            | 36K   | Preact        |     | Hooks           | × | npm create vite  |             |
+| △ | vue2-options-api            | 824K  | Vue 2.x       |     | Options API     | ○ | vue init webpack | `??` 動かず |
+| △ | nuxt4-vue2                  | 324K  | Vue 2.x       |     | Options API     | ○ | create-nuxt-app  |             |
+| × | vue3-composition-return-api | 72K   | Vue >= 3.0    |     | Composition API | ○ | npm create vite  |             |
+| ◎ | vue3-composition-setup-api  | 72K   | Vue >= 3.2    |     | script setup    | ○ | npm create vite  |             |
+| ☆ | svelte-simple-js            | 28K   | Svelte 3.44.0 | TS? |                 | ○ | npm create vite  | vite 2.9.0  |
+|    | vanilla-simple-app          | (16K) | なし          |     |                 |    | npm create vite  |             |
 
+- Size = ビルド後のサイズ
 - 変 = 変数を即時更新できる
+- vanilla-simple-app は電卓実装してない空の状態
 
 ## react-class-js
 
