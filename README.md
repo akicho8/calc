@@ -60,13 +60,15 @@
 - 長所
   - this 不要
   - useEffect で watch
-  - 単に変数に入れれば computed
+  - 単に変数に入れれば computed (なのか？？？)
 
 ## preact-hooks-jsx
 
 - react-hooks-js と同じ書き方
+- 主要な機能に絞ってある
+
 - 短所
-  - マイナー機能が省かれている
+  - Reactの一部の機能が使えなかったりする
 - 長所
   - ビルドサイズが React の 0.06 倍 (Svelteの方が軽い)
 
