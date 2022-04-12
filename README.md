@@ -64,9 +64,8 @@
 ## preact-hooks-jsx
 
 - react-hooks-js と同じ書き方
-
 - 短所
-  - よく使わない機能がない
+  - マイナー機能が省かれている
 - 長所
   - ビルドサイズが React の 0.06 倍 (Svelteの方が軽い)
 
