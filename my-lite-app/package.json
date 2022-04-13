@@ -2,9 +2,9 @@
   "name": "my-lite-app",
   "private": true,
   "version": "0.0.0",
-  "main": "dist/my-element.es.js",
+  "main": "dist/my-calc-app.es.js",
   "exports": {
-    ".": "./dist/my-element.es.js"
+    ".": "./dist/my-calc-app.es.js"
   },
   "files": [
     "dist"
