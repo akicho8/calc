@@ -122,6 +122,9 @@
 
 ## vue3-composition-setup-api
 
+- 短所
+  - Emacs の vue-mode.el が対応してない
+    - 対応 PR も放置されたまま
 - 長所
   - vue3-composition-return-api の問題が解消
   - コンポーネントは import するだけで使える
