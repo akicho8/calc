@@ -1,5 +1,5 @@
 {
-  "name": "my-lite-app",
+  "name": "lit-simple-app",
   "private": true,
   "version": "0.0.0",
   "main": "dist/my-calc-app.es.js",

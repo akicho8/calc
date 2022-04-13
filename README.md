@@ -14,22 +14,23 @@
 | × | vue3-composition-return-api | Vue >= 3.0    | 72K   |     | Composition API | npm create vite                |
 | ◎ | vue3-composition-setup-api  | Vue >= 3.2    | 72K   |     | script setup    | npm create vite                |
 | ☆ | svelte-simple-js            | Svelte 3.44.0 | 28K   | TS? |                 | npm create vite                |
+| △ | lit-simple-app              | lit           | 8K    |     |                 | npm create vite                |
 |    | vanilla-simple-app          | なし          | (16K) |     |                 | npm create vite                |
-|    | [WIP] my-lite-app           | lit           |       |     |                 |                                |
 
 - Size = ビルド後のサイズ
 - vanilla-simple-app は電卓実装してない空の状態
 
 ## Getter / Setter の違い
 
-| FW         | 即 | Getter         | Setter                  | 定義                                  |
-|------------|----|----------------|-------------------------|---------------------------------------|
-| React      | × | this.state.foo | this.setState({foo: 1}) | this.state = { foo: 0 }               |
-| React 16.8 | × | foo            | setFoo(1)               | const [foo, setFoo] = useState(0)     |
-| Solid      | ○ | foo()          | setFoo(1)               | const [foo, setFoo] = createSignal(0) |
-| Vue 2      | ○ | this.foo       | this.foo = 1            | data() { return { foo: 0 } }          |
-| Vue 3      | ○ | foo.value      | foo.value = 1           | const foo = ref(0)                    |
-| Svelte     | ○ | foo            | foo = 1                 | let foo = 0                           |
+| FW         | 即 | Getter         | Setter                  | 定義                                            |
+|------------|----|----------------|-------------------------|-------------------------------------------------|
+| React      | × | this.state.foo | this.setState({foo: 1}) | this.state = { foo: 0 }                         |
+| React 16.8 | × | foo            | setFoo(1)               | const [foo, setFoo] = useState(0)               |
+| Solid      | ○ | foo()          | setFoo(1)               | const [foo, setFoo] = createSignal(0)           |
+| Vue 2      | ○ | this.foo       | this.foo = 1            | data() { return { foo: 0 } }                    |
+| Vue 3      | ○ | foo.value      | foo.value = 1           | const foo = ref(0)                              |
+| Svelte     | ○ | foo            | foo = 1                 | let foo = 0                                     |
+| lit        | ○ | this.foo       | this.foo = 1            | properties() { return { foo: { type: Number } } |
 
 - 即 = 変数を即時更新できる
 
@@ -143,6 +144,19 @@
   - ビルドサイズが小さい
     - React の 0.05 倍
     - Preact の 0.78 倍
+
+## lit-simple-app
+
+- 特徴
+  - ネイティブなHTMLタグを作る
+  - ビルドはjsファイルを集めて1つのファイルにしただけ(？)
+
+- 短所
+  - 登録したタグ名の内側にコンポーネント内で render したものが入るため異様にスタイルが当てずらい
+  - 登録したタグと同じ名前にしても外部CSSが当たらない
+  - jsの中でスタイルをベタ書きなんか絶対やりたくないので外部CSSを用意したがぜんぜん適用できないの諦めた
+- 長所
+  - 変数は即時更新できる
 
 ## vanilla-simple-app
 

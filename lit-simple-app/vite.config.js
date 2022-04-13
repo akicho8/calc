@@ -4,7 +4,7 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   build: {
     lib: {
-      entry: 'src/my-calc-app.js',
+      entry: 'src/CalcApp.js',
       formats: ['es']
     },
     rollupOptions: {
