@@ -14,7 +14,7 @@
 | × | vue3-composition-return-api | Vue >= 3.0    | 72K   |     | Composition API | npm create vite                |
 | ◎ | vue3-composition-setup-api  | Vue >= 3.2    | 72K   |     | script setup    | npm create vite                |
 | ☆ | svelte-simple-js            | Svelte 3.44.0 | 28K   | TS? |                 | npm create vite                |
-| △ | lit-simple-app              | lit           | 8K    |     |                 | npm create vite                |
+| △ | lit-simple-app              | lit           | 8K    |     | Class           | npm create vite                |
 |    | vanilla-simple-app          | なし          | (16K) |     |                 | npm create vite                |
 
 - Size = ビルド後のサイズ
@@ -154,7 +154,7 @@
 - 短所
   - 登録したタグ名の内側にコンポーネント内で render したものが入るため異様にスタイルが当てずらい
   - 登録したタグと同じ名前にしても外部CSSが当たらない
-  - jsの中でスタイルをベタ書きなんか絶対やりたくないので外部CSSを用意したがぜんぜん適用できないの諦めた
+  - jsの中でスタイルをベタ書きなんか絶対やりたくないので外部CSSを用意したがとにかくぜんぜん適用できないので諦めた
 - 長所
   - 変数は即時更新できる
 
