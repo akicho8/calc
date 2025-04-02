@@ -15,6 +15,15 @@
 <script>
 export default {
   name: 'IndexPage',
+  mounted() {
+    console.log(this.$route)
+  },
+  async asyncData({ $axios, query }) {
+    console.log("SSR {")
+    console.log(query)
+    console.log("SSR }")
+    return { }
+  },
 }
 </script>
 

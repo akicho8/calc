@@ -1,0 +1,27 @@
+<div class="app">
+  <span class="CalcApp" data-controller="calc" data-calc-foo-value="123">
+    <div class="CalcDisplay" data-calc-target="CalcDisplay"></div>
+    <div class="CalcNumButtons">
+      <button class="CalcDarkButton" data-calc-target="onClearButton" data-action="click->calc#onClearHandle">C</button>
+      <button class="CalcDarkButton" data-calc-target="onAllClearButton" data-action="click->calc#onAllClearHandle">AC</button>
+      <button class="CalcDarkButton" data-action="click->calc#onSignToggle">±</button>
+      <button class="CalcDarkButton" data-action="click->calc#onParcentage">％</button>
+      <button class="CalcOpButton" data-action="click->calc#onSetOpHandle" data-calc-op-param="/">÷</button>
+      <button class="CalcNumButton" data-action="click->calc#onNumberClickHandle" data-calc-plus-value-param="7">7</button>
+      <button class="CalcNumButton" data-action="click->calc#onNumberClickHandle" data-calc-plus-value-param="8">8</button>
+      <button class="CalcNumButton" data-action="click->calc#onNumberClickHandle" data-calc-plus-value-param="9">9</button>
+      <button class="CalcOpButton" data-action="click->calc#onSetOpHandle" data-calc-op-param="*">×</button>
+      <button class="CalcNumButton" data-action="click->calc#onNumberClickHandle" data-calc-plus-value-param="4">4</button>
+      <button class="CalcNumButton" data-action="click->calc#onNumberClickHandle" data-calc-plus-value-param="5">5</button>
+      <button class="CalcNumButton" data-action="click->calc#onNumberClickHandle" data-calc-plus-value-param="6">6</button>
+      <button class="CalcOpButton" data-action="click->calc#onSetOpHandle" data-calc-op-param="-">-</button>
+      <button class="CalcNumButton" data-action="click->calc#onNumberClickHandle" data-calc-plus-value-param="1">1</button>
+      <button class="CalcNumButton" data-action="click->calc#onNumberClickHandle" data-calc-plus-value-param="2">2</button>
+      <button class="CalcNumButton" data-action="click->calc#onNumberClickHandle" data-calc-plus-value-param="3">3</button>
+      <button class="CalcOpButton" data-action="click->calc#onSetOpHandle" data-calc-op-param="+">+</button>
+      <button class="CalcNumButton is_2x" data-action="click->calc#onNumberClickHandle" data-calc-plus-value-param="0">0</button>
+      <button class="CalcNumButton" data-action="click->calc#onZeroZeroClick">00</button>
+      <button class="CalcOpButton" data-action="click->calc#onEqualHandle">=</button>
+    </div>
+  </span>
+</app>
