@@ -150,7 +150,7 @@ export class CalcApp extends LitElement {
     if (this.bx_r != null) {
       this.bx_r = this.bx_r / 100
     } else if (this.ax_r != null) {
-      this.ax_r = ax_r / 100
+      this.ax_r = this.ax_r / 100
     }
   }
 
